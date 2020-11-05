@@ -17,35 +17,58 @@ italy <- readDNAStringSet("SARS2-hum-Italy/ncbi_dataset/data/genomic.fna")
 brazil <- readDNAStringSet("SARS2-hum-Brazil/ncbi_dataset/data/genomic.fna")
 
 ### align sequences by country
-france_align <- AlignSeqs(france)
 france_consensus <- ConsensusSequence(france)
+fileConn1 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/france_consensus.fasta"
+writeXStringSet(france_consensus, fileConn1)
 
-usa_align <- AlignSeqs(usa)
+
 usa_consensus <- ConsensusSequence(usa)
+fileConn2 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/usa_consensus.fasta"
+writeXStringSet(usa_consensus, fileConn2)
 
-china_align <- AlignSeqs(china)
+
 china_consensus <- ConsensusSequence(china)
+fileConn3 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/china_consensus.fasta"
+writeXStringSet(china_consensus, fileConn3)
 
-spain_align <- AlignSeqs(spain)
+
 spain_consensus <- ConsensusSequence(spain)
+fileConn4 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/spain_consensus.fasta"
+writeXStringSet(spain_consensus, fileConn4)
 
-columbia_align <- AlignSeqs(columbia)
+
 columbia_consensus <- ConsensusSequence(columbia)
+fileConn5 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/columbia_consensus.fasta"
+writeXStringSet(columbia_consensus, fileConn5)
 
-peru_align <- AlignSeqs(peru)
+
 peru_consensus <- ConsensusSequence(peru)
+fileConn6 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/peru_consensus.fasta"
+writeXStringSet(peru_consensus, fileConn6)
 
-russia_align <- AlignSeqs(russia)
+
 russia_consensus <- ConsensusSequence(russia)
+fileConn7 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/russia_consensus.fasta"
+writeXStringSet(russia_consensus, fileConn7)
 
-mexico_align <- AlignSeqs(mexico)
+
 mexico_consensus <- ConsensusSequence(mexico)
+fileConn8 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/mexico_consensus.fasta"
+writeXStringSet(mexico_consensus, fileConn8)
 
-italy_align <- AlignSeqs(mexico)
+
 italy_consensus <- ConsensusSequence(italy)
+fileConn9 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/italy_consensus.fasta"
+writeXStringSet(italy_consensus, fileConn9)
 
-india_align <- AlignSeqs(india)
+
 india_consensus <- ConsensusSequence(india)
+fileConn10 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/india_consensus.fasta"
+writeXStringSet(india_consensus, fileConn10)
 
-brazil_align <- AlignSeqs(brazil)
+
 brazil_consensus <- ConsensusSequence(brazil)
+fileConn11 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/brazil_consensus.fasta"
+writeXStringSet(brazil_consensus, fileConn11)
+
+
