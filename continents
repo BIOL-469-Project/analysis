@@ -1,4 +1,5 @@
-library(decipher)
+library(DECIPHER)
+library(msa)
 
 setwd("~/Desktop/Final_Project/Datasets/Continents")
 
@@ -10,14 +11,18 @@ europe <- readDNAStringSet("SARS2-hum-Europe/ncbi_dataset/data/genomic.fna")
 africa <- readDNAStringSet("SARS2-hum-Africa/ncbi_dataset/data/genomic.fna")
 
 ### align sequences by country
-asia_align <- AlignSeqs(asia)
 asia_consensus <- ConsensusSequence(asia)
+fileConn1 <- "~/Desktop/Final_Project/Datasets/Continents/Consensus/asia_consensus.fasta"
+writeXStringSet(asia_consensus, fileConn1)
 
-oceania_align <- AlignSeqs(oceania)
 oceania_consensus <- ConsensusSequence(oceania)
+fileConn2 <- "~/Desktop/Final_Project/Datasets/Continents/Consensus/oceania_consensus.fasta"
+writeXStringSet(oceania_consensus, fileConn2)
 
-europe_align <- AlignSeqs(europe)
 europe_consensus <- ConsensusSequence(europe)
+fileConn3 <- "~/Desktop/Final_Project/Datasets/Continents/Consensus/europe_consensus.fasta"
+writeXStringSet(europe_consensus, fileConn3)
 
-africa_align <- AlignSeqs(africa)
 africa_consensus <- ConsensusSequence(africa)
+fileConn4 <- "~/Desktop/Final_Project/Datasets/Continents/Consensus/africa_consensus.fasta"
+writeXStringSet(africa_consensus, fileConn4)
