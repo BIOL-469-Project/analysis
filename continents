@@ -1,0 +1,23 @@
+library(decipher)
+
+setwd("~/Desktop/Final_Project/Datasets/Continents")
+
+
+### download datasets from different continents
+asia <- readDNAStringSet("SARS2-hum-Asia/ncbi_dataset/data/genomic.fna")
+oceania <- readDNAStringSet("SARS2-hum-Oceania/ncbi_dataset/data/genomic.fna")
+europe <- readDNAStringSet("SARS2-hum-Europe/ncbi_dataset/data/genomic.fna")
+africa <- readDNAStringSet("SARS2-hum-Africa/ncbi_dataset/data/genomic.fna")
+
+### align sequences by country
+asia_align <- AlignSeqs(asia)
+asia_consensus <- ConsensusSequence(asia)
+
+oceania_align <- AlignSeqs(oceania)
+oceania_consensus <- ConsensusSequence(oceania)
+
+europe_align <- AlignSeqs(europe)
+europe_consensus <- ConsensusSequence(europe)
+
+africa_align <- AlignSeqs(africa)
+africa_consensus <- ConsensusSequence(africa)
