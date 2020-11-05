@@ -1,0 +1,26 @@
+library(DECIPHER)
+
+setwd("~/Desktop/Final_Project/Datasets/Countries")
+
+france <- readDNAStringSet("SARS2-hum-France/ncbi_dataset/data/genomic.fna")
+usa <- readDNAStringSet("SARS2-hum-USA/ncbi_dataset/data/genomic.fna")
+china <- readDNAStringSet("SARS2-hum-China/ncbi_dataset/data/genomic.fna")
+spain <- readDNAStringSet("SARS2-hum-Spain/ncbi_dataset/data/genomic.fna")
+columbia <- readDNAStringSet("SARS2-hum-Columbia/ncbi_dataset/data/genomic.fna")
+peru <- readDNAStringSet("SARS2-hum-Peru/ncbi_dataset/data/genomic.fna")
+uk <- readDNAStringSet("SARS2-hum-UK/ncbi_dataset/data/genomic.fna")
+russia <- readDNAStringSet("SARS2-hum-Russia/ncbi_dataset/data/genomic.fna")
+sa<- readDNAStringSet("SARS2-hum-SA/ncbi_dataset/data/genomic.fna")
+mexico <- readDNAStringSet("SARS2-hum-Mexico/ncbi_dataset/data/genomic.fna")
+india <- readDNAStringSet("SARS2-hum-India/ncbi_dataset/data/genomic.fna")
+italy <- readDNAStringSet("SARS2-hum-Italy/ncbi_dataset/data/genomic.fna")
+argentina <- readDNAStringSet("SARS2-hum-Argentina/ncbi_dataset/data/genomic.fna")
+brazil <- readDNAStringSet("SARS2-hum-Brazil/ncbi_dataset/data/genomic.fna")
+
+
+setwd("~/Desktop/Final_Project/Datasets/Continents")
+
+asia <- readDNAStringSet("SARS2-hum-Asia/ncbi_dataset/data/genomic.fna")
+oceania <- readDNAStringSet("SARS2-hum-Oceania/ncbi_dataset/data/genomic.fna")
+europe <- readDNAStringSet("SARS2-hum-Europe/ncbi_dataset/data/genomic.fna")
+africa <- readDNAStringSet("SARS2-hum-Africa/ncbi_dataset/data/genomic.fna")
