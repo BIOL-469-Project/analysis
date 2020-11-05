@@ -1,0 +1,51 @@
+library(DECIPHER)
+library(msa)
+
+setwd("~/Desktop/Final_Project/Datasets/Countries")
+
+### download datasets from different countries 
+france <- readDNAStringSet("SARS2-hum-France/ncbi_dataset/data/genomic.fna")
+usa <- readDNAStringSet("SARS2-hum-USA/ncbi_dataset/data/genomic.fna")
+china <- readDNAStringSet("SARS2-hum-China/ncbi_dataset/data/genomic.fna")
+spain <- readDNAStringSet("SARS2-hum-Spain/ncbi_dataset/data/genomic.fna")
+columbia <- readDNAStringSet("SARS2-hum-Columbia/ncbi_dataset/data/genomic.fna")
+peru <- readDNAStringSet("SARS2-hum-Peru/ncbi_dataset/data/genomic.fna")
+russia <- readDNAStringSet("SARS2-hum-Russia/ncbi_dataset/data/genomic.fna")
+mexico <- readDNAStringSet("SARS2-hum-Mexico/ncbi_dataset/data/genomic.fna")
+india <- readDNAStringSet("SARS2-hum-India/ncbi_dataset/data/genomic.fna")
+italy <- readDNAStringSet("SARS2-hum-Italy/ncbi_dataset/data/genomic.fna")
+brazil <- readDNAStringSet("SARS2-hum-Brazil/ncbi_dataset/data/genomic.fna")
+
+### align sequences by country
+france_align <- AlignSeqs(france)
+france_consensus <- ConsensusSequence(france)
+
+usa_align <- AlignSeqs(usa)
+usa_consensus <- ConsensusSequence(usa)
+
+china_align <- AlignSeqs(china)
+china_consensus <- ConsensusSequence(china)
+
+spain_align <- AlignSeqs(spain)
+spain_consensus <- ConsensusSequence(spain)
+
+columbia_align <- AlignSeqs(columbia)
+columbia_consensus <- ConsensusSequence(columbia)
+
+peru_align <- AlignSeqs(peru)
+peru_consensus <- ConsensusSequence(peru)
+
+russia_align <- AlignSeqs(russia)
+russia_consensus <- ConsensusSequence(russia)
+
+mexico_align <- AlignSeqs(mexico)
+mexico_consensus <- ConsensusSequence(mexico)
+
+italy_align <- AlignSeqs(mexico)
+italy_consensus <- ConsensusSequence(italy)
+
+india_align <- AlignSeqs(india)
+india_consensus <- ConsensusSequence(india)
+
+brazil_align <- AlignSeqs(brazil)
+brazil_consensus <- ConsensusSequence(brazil)
