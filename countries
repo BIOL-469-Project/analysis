@@ -6,6 +6,8 @@ setwd("~/Desktop/Final_Project/MAFFT/Countries")
 
 ### download alignment file from MAFFT and convert to SNP genlight object
 china <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Countries/China.fasta")
+india <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Countries/India.fasta")
+usa <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Countries/USA.fasta")
 
 ### plot SNP genlight object
 temp <- density(position(china), bw=10)
@@ -14,22 +16,12 @@ dev.copy(png,'china.png')
 dev.off()
 
 
-### download alignment file from MAFFT and convert to SNP genlight object
-india <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Countries/India.fasta")
-
-### plot SNP genlight object
 temp <- density(position(india), bw=10)
 plot(temp, xlab="Position in the alignment", lwd=2, main="SNP Locations of Sequences Collected from India")
 dev.copy(png,'india.png')
 dev.off()
 
 
-
-### download alignment file from MAFFT and convert to SNP genlight object
-usa <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Countries/USA.fasta")
-
-
-### plot SNP genlight object
 temp <- density(position(usa), bw=10)
 plot(temp, xlab="Position in the alignment", lwd=2, main="SNP Locations of Sequences Collected from the USA")
 dev.copy(png,'usa.png')
