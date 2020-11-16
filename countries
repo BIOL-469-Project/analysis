@@ -1,74 +1,57 @@
-library(DECIPHER)
-library(msa)
+library(devtools)
+library("adegenet")
 
-setwd("~/Desktop/Final_Project/Datasets/Countries")
+### set working directory
+setwd("~/Desktop/Final_Project/MAFFT/Countries")
 
-### download datasets from different countries 
-france <- readDNAStringSet("SARS2-hum-France/ncbi_dataset/data/genomic.fna")
-usa <- readDNAStringSet("SARS2-hum-USA/ncbi_dataset/data/genomic.fna")
-china <- readDNAStringSet("SARS2-hum-China/ncbi_dataset/data/genomic.fna")
-spain <- readDNAStringSet("SARS2-hum-Spain/ncbi_dataset/data/genomic.fna")
-columbia <- readDNAStringSet("SARS2-hum-Columbia/ncbi_dataset/data/genomic.fna")
-peru <- readDNAStringSet("SARS2-hum-Peru/ncbi_dataset/data/genomic.fna")
-russia <- readDNAStringSet("SARS2-hum-Russia/ncbi_dataset/data/genomic.fna")
-mexico <- readDNAStringSet("SARS2-hum-Mexico/ncbi_dataset/data/genomic.fna")
-india <- readDNAStringSet("SARS2-hum-India/ncbi_dataset/data/genomic.fna")
-italy <- readDNAStringSet("SARS2-hum-Italy/ncbi_dataset/data/genomic.fna")
-brazil <- readDNAStringSet("SARS2-hum-Brazil/ncbi_dataset/data/genomic.fna")
+### download alignment file from MAFFT and convert to SNP genlight object
+china <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Countries/China.fasta")
 
-### align sequences by country
-france_consensus <- ConsensusSequence(france)
-fileConn1 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/france_consensus.fasta"
-writeXStringSet(france_consensus, fileConn1)
+### plot SNP genlight object
+temp <- density(position(china), bw=10)
+plot(temp, xlab="Position in the alignment", lwd=2, main="SNP Locations of Sequences Collected from China")
+dev.copy(png,'china.png')
+dev.off()
 
 
-usa_consensus <- ConsensusSequence(usa)
-fileConn2 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/usa_consensus.fasta"
-writeXStringSet(usa_consensus, fileConn2)
+### download alignment file from MAFFT and convert to SNP genlight object
+india <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Countries/India.fasta")
+
+### plot SNP genlight object
+temp <- density(position(india), bw=10)
+plot(temp, xlab="Position in the alignment", lwd=2, main="SNP Locations of Sequences Collected from India")
+dev.copy(png,'india.png')
+dev.off()
 
 
-china_consensus <- ConsensusSequence(china)
-fileConn3 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/china_consensus.fasta"
-writeXStringSet(china_consensus, fileConn3)
+
+### download alignment file from MAFFT and convert to SNP genlight object
+usa <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Countries/USA.fasta")
 
 
-spain_consensus <- ConsensusSequence(spain)
-fileConn4 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/spain_consensus.fasta"
-writeXStringSet(spain_consensus, fileConn4)
+### plot SNP genlight object
+temp <- density(position(usa), bw=10)
+plot(temp, xlab="Position in the alignment", lwd=2, main="SNP Locations of Sequences Collected from the USA")
+dev.copy(png,'usa.png')
+dev.off()
 
 
-columbia_consensus <- ConsensusSequence(columbia)
-fileConn5 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/columbia_consensus.fasta"
-writeXStringSet(columbia_consensus, fileConn5)
+
+### create dataframes to analyze top snps 
+china_df <- as.data.frame(x = china)
+india_df <- as.data.frame(x = india)
+usa_df <- as.data.frame(x = usa)
 
 
-peru_consensus <- ConsensusSequence(peru)
-fileConn6 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/peru_consensus.fasta"
-writeXStringSet(peru_consensus, fileConn6)
+### top 10 snps
+china_snp <- colSums(china_df, na.rm = TRUE)
+china_top_snp <- head(sort(china_snp, decreasing = TRUE),10)
+china_top_snp <- as.data.frame(china_top_snp)
 
+india_snp <- colSums(india_df, na.rm = TRUE)
+india_top_snp <- head(sort(india_snp, decreasing = TRUE),10)
+india_top_snp <- as.data.frame(india_top_snp)
 
-russia_consensus <- ConsensusSequence(russia)
-fileConn7 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/russia_consensus.fasta"
-writeXStringSet(russia_consensus, fileConn7)
-
-
-mexico_consensus <- ConsensusSequence(mexico)
-fileConn8 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/mexico_consensus.fasta"
-writeXStringSet(mexico_consensus, fileConn8)
-
-
-italy_consensus <- ConsensusSequence(italy)
-fileConn9 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/italy_consensus.fasta"
-writeXStringSet(italy_consensus, fileConn9)
-
-
-india_consensus <- ConsensusSequence(india)
-fileConn10 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/india_consensus.fasta"
-writeXStringSet(india_consensus, fileConn10)
-
-
-brazil_consensus <- ConsensusSequence(brazil)
-fileConn11 <- "~/Desktop/Final_Project/Datasets/Countries/Consensus/brazil_consensus.fasta"
-writeXStringSet(brazil_consensus, fileConn11)
-
-
+usa_snp <- colSums(usa_df, na.rm = TRUE)
+usa_top_snp <- head(sort(usa_snp, decreasing = TRUE),10)
+usa_top_snp <- as.data.frame(usa_top_snp)
