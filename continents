@@ -1,28 +1,121 @@
-library(DECIPHER)
-library(msa)
+library(devtools)
+library("adegenet")
 
-setwd("~/Desktop/Final_Project/Datasets/Continents")
+setwd("~/Desktop/Final_Project/MAFFT/Continents")
+
+europe <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Continents/europe.fasta")
+
+## look at extracted information
+position(europe)
+alleles(europe)
+locNames(europe)
+
+temp <- density(position(europe), bw=10)
+plot(temp, xlab="Position in the alignment", lwd=2, main="SNP Locations of Sequences Collected from Europe")
+dev.copy(png,'europe.png')
+dev.off()
 
 
-### download datasets from different continents
-asia <- readDNAStringSet("SARS2-hum-Asia/ncbi_dataset/data/genomic.fna")
-oceania <- readDNAStringSet("SARS2-hum-Oceania/ncbi_dataset/data/genomic.fna")
-europe <- readDNAStringSet("SARS2-hum-Europe/ncbi_dataset/data/genomic.fna")
-africa <- readDNAStringSet("SARS2-hum-Africa/ncbi_dataset/data/genomic.fna")
+asia <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Continents/asia.fasta")
 
-### align sequences by country
-asia_consensus <- ConsensusSequence(asia)
-fileConn1 <- "~/Desktop/Final_Project/Datasets/Continents/Consensus/asia_consensus.fasta"
-writeXStringSet(asia_consensus, fileConn1)
+## look at extracted information
+position(asia)
+alleles(asia)
+locNames(asia)
 
-oceania_consensus <- ConsensusSequence(oceania)
-fileConn2 <- "~/Desktop/Final_Project/Datasets/Continents/Consensus/oceania_consensus.fasta"
-writeXStringSet(oceania_consensus, fileConn2)
+temp <- density(position(asia), bw=10)
+plot(temp, xlab="Position in the alignment", lwd=2, main="SNP Locations of Sequences Collected from Asia")
+dev.copy(png,'asia.png')
+dev.off()
 
-europe_consensus <- ConsensusSequence(europe)
-fileConn3 <- "~/Desktop/Final_Project/Datasets/Continents/Consensus/europe_consensus.fasta"
-writeXStringSet(europe_consensus, fileConn3)
 
-africa_consensus <- ConsensusSequence(africa)
-fileConn4 <- "~/Desktop/Final_Project/Datasets/Continents/Consensus/africa_consensus.fasta"
-writeXStringSet(africa_consensus, fileConn4)
+
+africa <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Continents/africa.fasta")
+
+## look at extracted information
+position(africa)
+alleles(africa)
+locNames(africa)
+
+temp <- density(position(africa), bw=10)
+plot(temp, xlab="Position in the alignment", lwd=2, main="SNP Locations of Sequences Collected from Africa")
+dev.copy(png,'africa.png')
+dev.off()
+
+
+
+northamerica <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Continents/northamerica.fasta")
+
+## look at extracted information
+position(northamerica)
+alleles(northamerica)
+locNames(northamerica)
+
+temp <- density(position(northamerica), bw=10)
+plot(temp, xlab="Position in the alignment", lwd=2, main="SNP Locations of Sequences Collected from North America")
+dev.copy(png,'northamerica.png')
+dev.off()
+
+
+
+southamerica <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Continents/southamerica.fasta")
+
+## look at extracted information
+position(southamerica)
+alleles(southamerica)
+locNames(southamerica)
+
+temp <- density(position(southamerica), bw=10)
+plot(temp, xlab="Position in the alignment", lwd=2, main="SNP Locations of Sequences Collected from South America")
+dev.copy(png,'southamerica.png')
+dev.off()
+
+
+
+oceania <- fasta2genlight(file = "~/Desktop/Final_Project/MAFFT/Continents/oceania.fasta")
+
+## look at extracted information
+position(oceania)
+alleles(oceania)
+locNames(oceania)
+
+temp <- density(position(oceania), bw=10)
+plot(temp, xlab="Position in the alignment", lwd=2, main="SNP Locations of Sequences Collected from Oceania")
+dev.copy(png,'oceania.png')
+dev.off()
+
+
+
+### create dataframes to analyze top snps 
+asia_df <- as.data.frame(x = asia)
+africa_df <- as.data.frame(x = africa)
+europe_df <- as.data.frame(x = europe)
+northamerica_df <- as.data.frame(x = northamerica)
+southamerica_df <- as.data.frame(x = southamerica)
+oceania_df <- as.data.frame(x = oceania)
+
+
+### top 10 snps
+africa_snp <- colSums(africa_df, na.rm = TRUE)
+africa_top_snp <- head(sort(africa_snp, decreasing = TRUE),10)
+africa_top_snp <- as.data.frame(africa_top_snp)
+
+asia_snp <- colSums(asia_df, na.rm = TRUE)
+asia_top_snp <- head(sort(asia_snp, decreasing = TRUE),10)
+asia_top_snp <- as.data.frame(asia_top_snp)
+
+europe_snp <- colSums(europe_df, na.rm = TRUE)
+europe_top_snp <- head(sort(europe_snp, decreasing = TRUE),10)
+europe_top_snp <- as.data.frame(europe_top_snp)
+
+northamerica_snp <- colSums(northamerica_df, na.rm = TRUE)
+northamerica_top_snp <- head(sort(northamerica_snp, decreasing = TRUE),10)
+northamerica_top_snp <- as.data.frame(northamerica_top_snp)
+
+southamerica_snp <- colSums(southamerica_df, na.rm = TRUE)
+southamerica_top_snp <- head(sort(southamerica_snp, decreasing = TRUE),10)
+southamerica_top_snp <- as.data.frame(southamerica_top_snp)
+
+oceania_snp <- colSums(oceania_df, na.rm = TRUE)
+oceania_top_snp <- head(sort(oceania_snp, decreasing = TRUE),10)
+oceania_top_snp <- as.data.frame(oceania_top_snp)
