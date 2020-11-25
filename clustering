@@ -1,0 +1,400 @@
+library("adegenet")
+
+setwd("~/Desktop/Final_Project/MAFFT/Continents")
+
+africa <- readRDS("africa.RDS") 
+asia <- readRDS("asia.RDS") 
+europe <- readRDS("europe.RDS") 
+northamerica <- readRDS("northamerica.RDS") 
+southamerica <- readRDS("southamerica.RDS") 
+oceania <- readRDS("oceania.RDS") 
+
+
+africa_clusters <- find.clusters.genlight(africa)
+africa_clusters$Kstat
+africa_clusters$stat
+
+saveRDS(africa_clusters, file = "africa_clusters.RDS")
+
+africa_pops <- as.data.frame(africa_clusters$grp)
+africa_pops$name <- rownames(africa_pops)
+africa_pops <- split(africa_pops$name, africa_pops$`africa_clusters$grp`)
+
+africa_pop_1 <- unlist(africa_pops[1])
+africa_pop_2 <- unlist(africa_pops[2])
+africa_pop_3 <- unlist(africa_pops[3])
+
+africa_df <- as.data.frame(africa)
+
+africa_1 <- subset(africa_df, rownames(africa_df) %in% africa_pop_1)
+africa_2 <- subset(africa_df, rownames(africa_df) %in% africa_pop_2)
+africa_3 <- subset(africa_df, rownames(africa_df) %in% africa_pop_3)
+
+africa_1_snp <- colSums(africa_1, na.rm = TRUE)
+africa_1_top_snp <- head(sort(africa_1_snp, decreasing = TRUE),5)
+africa_1_top_snp <- as.data.frame(africa_1_top_snp)
+
+africa_2_snp <- colSums(africa_2, na.rm = TRUE)
+africa_2_top_snp <- head(sort(africa_2_snp, decreasing = TRUE),5)
+africa_2_top_snp <- as.data.frame(africa_2_top_snp)
+
+africa_3_snp <- colSums(africa_3, na.rm = TRUE)
+africa_3_top_snp <- head(sort(africa_3_snp, decreasing = TRUE),5)
+africa_3_top_snp <- as.data.frame(africa_3_top_snp)
+
+
+
+
+asia_clusters <- find.clusters.genlight(asia)
+asia_clusters$Kstat
+asia_clusters$stat
+
+saveRDS(asia_clusters, file = "asia_clusters.RDS")
+
+asia_pops <- asia_clusters$grp
+asia_pops <- as.data.frame(asia_pops)
+asia_pops$name = rownames(asia_pops)
+asia_pops <- split(asia_pops$name, asia_pops$asia_pops)
+
+asia_pop_1 <- unlist(asia_pops[1])
+asia_pop_2 <- unlist(asia_pops[2])
+asia_pop_3 <- unlist(asia_pops[3])
+asia_pop_4 <- unlist(asia_pops[4])
+
+asia_df <- as.data.frame(asia)
+
+asia_1 <- subset(asia_df, rownames(asia_df) %in% asia_pop_1)
+asia_2 <- subset(asia_df, rownames(asia_df) %in% asia_pop_2)
+asia_3 <- subset(asia_df, rownames(asia_df) %in% asia_pop_3)
+asia_4 <- subset(asia_df, rownames(asia_df) %in% asia_pop_4)
+
+asia_1_snp <- colSums(asia_1, na.rm = TRUE)
+asia_1_top_snp <- head(sort(asia_1_snp, decreasing = TRUE),5)
+asia_1_top_snp <- as.data.frame(asia_1_top_snp)
+
+asia_2_snp <- colSums(asia_2, na.rm = TRUE)
+asia_2_top_snp <- head(sort(asia_2_snp, decreasing = TRUE),5)
+asia_2_top_snp <- as.data.frame(asia_2_top_snp)
+
+asia_3_snp <- colSums(asia_3, na.rm = TRUE)
+asia_3_top_snp <- head(sort(asia_3_snp, decreasing = TRUE),5)
+asia_3_top_snp <- as.data.frame(asia_3_top_snp)
+
+asia_4_snp <- colSums(asia_4, na.rm = TRUE)
+asia_4_top_snp <- head(sort(asia_4_snp, decreasing = TRUE),5)
+asia_4_top_snp <- as.data.frame(asia_4_top_snp)
+
+
+
+
+
+
+europe_clusters <- find.clusters.genlight(europe)
+europe_clusters$Kstat
+europe_clusters$stat
+
+saveRDS(europe_clusters, file = "europe_clusters.RDS")
+
+europe_pops <- europe_clusters$grp
+europe_pops <- as.data.frame(europe_pops)
+europe_pops$name = rownames(europe_pops)
+europe_pops <- split(europe_pops$name, europe_pops$europe_pops)
+
+
+europe_pop_1 <- unlist(europe_pops[1])
+europe_pop_2 <- unlist(europe_pops[2])
+europe_pop_3 <- unlist(europe_pops[3])
+europe_pop_4 <- unlist(europe_pops[4])
+
+europe_df <- as.data.frame(europe)
+
+europe_1 <- subset(europe_df, rownames(europe_df) %in% europe_pop_1)
+europe_2 <- subset(europe_df, rownames(europe_df) %in% europe_pop_2)
+europe_3 <- subset(europe_df, rownames(europe_df) %in% europe_pop_3)
+europe_4 <- subset(europe_df, rownames(europe_df) %in% europe_pop_4)
+
+europe_1_snp <- colSums(europe_1, na.rm = TRUE)
+europe_1_top_snp <- head(sort(europe_1_snp, decreasing = TRUE),5)
+europe_1_top_snp <- as.data.frame(europe_1_top_snp)
+
+europe_2_snp <- colSums(europe_2, na.rm = TRUE)
+europe_2_top_snp <- head(sort(europe_2_snp, decreasing = TRUE),5)
+europe_2_top_snp <- as.data.frame(europe_2_top_snp)
+
+europe_3_snp <- colSums(europe_3, na.rm = TRUE)
+europe_3_top_snp <- head(sort(europe_3_snp, decreasing = TRUE),5)
+europe_3_top_snp <- as.data.frame(europe_3_top_snp)
+
+europe_4_snp <- colSums(europe_4, na.rm = TRUE)
+europe_4_top_snp <- head(sort(europe_4_snp, decreasing = TRUE),5)
+europe_4_top_snp <- as.data.frame(europe_4_top_snp)
+
+
+
+
+
+
+southamerica_clusters <- find.clusters.genlight(southamerica)
+southamerica_clusters$Kstat
+southamerica_clusters$stat
+
+saveRDS(southamerica_clusters, file = "southamerica_clusters.RDS")
+
+southamerica_pops <- southamerica_clusters$grp
+southamerica_pops <- as.data.frame(southamerica_pops)
+southamerica_pops$name = rownames(southamerica_pops)
+southamerica_pops <- split(southamerica_pops$name, southamerica_pops$southamerica_pops)
+
+
+southamerica_pop_1 <- unlist(southamerica_pops[1])
+southamerica_pop_2 <- unlist(southamerica_pops[2])
+southamerica_pop_3 <- unlist(southamerica_pops[3])
+
+southamerica_df <- as.data.frame(southamerica)
+
+southamerica_1 <- subset(southamerica_df, rownames(southamerica_df) %in% southamerica_pop_1)
+southamerica_2 <- subset(southamerica_df, rownames(southamerica_df) %in% southamerica_pop_2)
+southamerica_3 <- subset(southamerica_df, rownames(southamerica_df) %in% southamerica_pop_3)
+southamerica_4 <- subset(southamerica_df, rownames(southamerica_df) %in% southamerica_pop_4)
+
+southamerica_1_snp <- colSums(southamerica_1, na.rm = TRUE)
+southamerica_1_top_snp <- head(sort(southamerica_1_snp, decreasing = TRUE),5)
+southamerica_1_top_snp <- as.data.frame(southamerica_1_top_snp)
+
+southamerica_2_snp <- colSums(southamerica_2, na.rm = TRUE)
+southamerica_2_top_snp <- head(sort(southamerica_2_snp, decreasing = TRUE),5)
+southamerica_2_top_snp <- as.data.frame(southamerica_2_top_snp)
+
+southamerica_3_snp <- colSums(southamerica_3, na.rm = TRUE)
+southamerica_3_top_snp <- head(sort(southamerica_3_snp, decreasing = TRUE),5)
+southamerica_3_top_snp <- as.data.frame(southamerica_3_top_snp)
+
+southamerica_4_snp <- colSums(southamerica_4, na.rm = TRUE)
+southamerica_4_top_snp <- head(sort(southamerica_4_snp, decreasing = TRUE),5)
+southamerica_4_top_snp <- as.data.frame(southamerica_4_top_snp)
+
+
+
+
+
+
+
+oceania_clusters <- find.clusters.genlight(oceania)
+
+oceania_pops <- oceania_clusters$grp
+oceania_pops <- as.data.frame(oceania_pops)
+oceania_pops$name = rownames(oceania_pops)
+oceania_pops <- split(oceania_pops$name, oceania_pops$oceania_pops)
+
+
+oceania_pop_1 <- unlist(oceania_pops[1])
+oceania_pop_2 <- unlist(oceania_pops[2])
+oceania_pop_3 <- unlist(oceania_pops[3])
+oceania_pop_4 <- unlist(oceania_pops[4])
+
+oceania_df <- as.data.frame(oceania)
+
+oceania_1 <- subset(oceania_df, rownames(oceania_df) %in% oceania_pop_1)
+oceania_2 <- subset(oceania_df, rownames(oceania_df) %in% oceania_pop_2)
+oceania_3 <- subset(oceania_df, rownames(oceania_df) %in% oceania_pop_3)
+oceania_4 <- subset(oceania_df, rownames(oceania_df) %in% oceania_pop_4)
+
+oceania_1_snp <- colSums(oceania_1, na.rm = TRUE)
+oceania_1_top_snp <- head(sort(oceania_1_snp, decreasing = TRUE),5)
+oceania_1_top_snp <- as.data.frame(oceania_1_top_snp)
+
+oceania_2_snp <- colSums(oceania_2, na.rm = TRUE)
+oceania_2_top_snp <- head(sort(oceania_2_snp, decreasing = TRUE),5)
+oceania_2_top_snp <- as.data.frame(oceania_2_top_snp)
+
+oceania_3_snp <- colSums(oceania_3, na.rm = TRUE)
+oceania_3_top_snp <- head(sort(oceania_3_snp, decreasing = TRUE),5)
+oceania_3_top_snp <- as.data.frame(oceania_3_top_snp)
+
+oceania_4_snp <- colSums(oceania_4, na.rm = TRUE)
+oceania_4_top_snp <- head(sort(oceania_4_snp, decreasing = TRUE),5)
+oceania_4_top_snp <- as.data.frame(oceania_4_top_snp)
+
+
+
+
+
+northamerica_clusters <- find.clusters.genlight(northamerica)
+
+northamerica_pops <- northamerica_clusters$grp
+northamerica_pops <- as.data.frame(northamerica_pops)
+northamerica_pops$name = rownames(northamerica_pops)
+northamerica_pops <- split(northamerica_pops$name, northamerica_pops$northamerica_pops)
+
+
+northamerica_pop_1 <- unlist(northamerica_pops[1])
+northamerica_pop_2 <- unlist(northamerica_pops[2])
+northamerica_pop_3 <- unlist(northamerica_pops[3])
+northamerica_pop_4 <- unlist(northamerica_pops[4])
+northamerica_pop_5 <- unlist(northamerica_pops[5])
+
+northamerica_df <- as.data.frame(northamerica)
+
+northamerica_1 <- subset(northamerica_df, rownames(northamerica_df) %in% northamerica_pop_1)
+northamerica_2 <- subset(northamerica_df, rownames(northamerica_df) %in% northamerica_pop_2)
+northamerica_3 <- subset(northamerica_df, rownames(northamerica_df) %in% northamerica_pop_3)
+northamerica_4 <- subset(northamerica_df, rownames(northamerica_df) %in% northamerica_pop_4)
+northamerica_5 <- subset(northamerica_df, rownames(northamerica_df) %in% northamerica_pop_5)
+
+northamerica_1_snp <- colSums(northamerica_1, na.rm = TRUE)
+northamerica_1_top_snp <- head(sort(northamerica_1_snp, decreasing = TRUE),5)
+northamerica_1_top_snp <- as.data.frame(northamerica_1_top_snp)
+
+northamerica_2_snp <- colSums(northamerica_2, na.rm = TRUE)
+northamerica_2_top_snp <- head(sort(northamerica_2_snp, decreasing = TRUE),5)
+northamerica_2_top_snp <- as.data.frame(northamerica_2_top_snp)
+
+northamerica_3_snp <- colSums(northamerica_3, na.rm = TRUE)
+northamerica_3_top_snp <- head(sort(northamerica_3_snp, decreasing = TRUE),5)
+northamerica_3_top_snp <- as.data.frame(northamerica_3_top_snp)
+
+northamerica_4_snp <- colSums(northamerica_4, na.rm = TRUE)
+northamerica_4_top_snp <- head(sort(northamerica_4_snp, decreasing = TRUE),5)
+northamerica_4_top_snp <- as.data.frame(northamerica_4_top_snp)
+
+northamerica_5_snp <- colSums(northamerica_5, na.rm = TRUE)
+northamerica_5_top_snp <- head(sort(northamerica_5_snp, decreasing = TRUE),5)
+northamerica_5_top_snp <- as.data.frame(northamerica_5_top_snp)
+
+
+
+
+
+
+
+
+
+
+
+
+setwd("~/Desktop/Final_Project/MAFFT/Countries")
+
+china <- readRDS("china.RDS") 
+india <- readRDS("india.RDS") 
+usa <- readRDS("usa.RDS")
+
+china_clusters <- find.clusters.genlight(china)
+
+saveRDS(china_clusters, file = "china_clusters.RDS")
+
+china_pops <- china_clusters$grp
+china_pops <- as.data.frame(china_pops)
+china_pops$name = rownames(china_pops)
+china_pops <- split(china_pops$name, china_pops$china_pops)
+
+
+china_pop_1 <- unlist(china_pops[1])
+china_pop_2 <- unlist(china_pops[2])
+china_pop_3 <- unlist(china_pops[3])
+
+china_df <- as.data.frame(china)
+
+china_1 <- subset(china_df, rownames(china_df) %in% china_pop_1)
+china_2 <- subset(china_df, rownames(china_df) %in% china_pop_2)
+china_3 <- subset(china_df, rownames(china_df) %in% china_pop_3)
+
+
+china_1_snp <- colSums(china_1, na.rm = TRUE)
+china_1_top_snp <- head(sort(china_1_snp, decreasing = TRUE),5)
+china_1_top_snp <- as.data.frame(china_1_top_snp)
+
+china_2_snp <- colSums(china_2, na.rm = TRUE)
+china_2_top_snp <- head(sort(china_2_snp, decreasing = TRUE),5)
+china_2_top_snp <- as.data.frame(china_2_top_snp)
+
+china_3_snp <- colSums(china_3, na.rm = TRUE)
+china_3_top_snp <- head(sort(china_3_snp, decreasing = TRUE),5)
+china_3_top_snp <- as.data.frame(china_3_top_snp)
+
+
+
+india_clusters <- find.clusters.genlight(india)
+
+saveRDS(india_clusters, file = "india_clusters.RDS")
+
+india_pops <- india_clusters$grp
+india_pops <- as.data.frame(india_pops)
+india_pops$name = rownames(india_pops)
+india_pops <- split(india_pops$name, india_pops$india_pops)
+
+
+india_pop_1 <- unlist(india_pops[1])
+india_pop_2 <- unlist(india_pops[2])
+india_pop_3 <- unlist(india_pops[3])
+
+india_df <- as.data.frame(india)
+
+india_1 <- subset(india_df, rownames(india_df) %in% india_pop_1)
+india_2 <- subset(india_df, rownames(india_df) %in% india_pop_2)
+india_3 <- subset(india_df, rownames(india_df) %in% india_pop_3)
+
+
+india_1_snp <- colSums(india_1, na.rm = TRUE)
+india_1_top_snp <- head(sort(india_1_snp, decreasing = TRUE),5)
+india_1_top_snp <- as.data.frame(india_1_top_snp)
+
+india_2_snp <- colSums(india_2, na.rm = TRUE)
+india_2_top_snp <- head(sort(india_2_snp, decreasing = TRUE),5)
+india_2_top_snp <- as.data.frame(india_2_top_snp)
+
+india_3_snp <- colSums(india_3, na.rm = TRUE)
+india_3_top_snp <- head(sort(india_3_snp, decreasing = TRUE),5)
+india_3_top_snp <- as.data.frame(india_3_top_snp)
+
+
+
+
+
+usa_clusters <- find.clusters.genlight(usa)
+
+saveRDS(usa_clusters, file = "usa_clusters.RDS")
+
+usa_clusters <- find.clusters.genlight(usa)
+
+saveRDS(usa_clusters, file = "usa_clusters.RDS")
+
+usa_pops <- usa_clusters$grp
+usa_pops <- as.data.frame(usa_pops)
+usa_pops$name = rownames(usa_pops)
+usa_pops <- split(usa_pops$name, usa_pops$usa_pops)
+
+
+usa_pop_1 <- unlist(usa_pops[1])
+usa_pop_2 <- unlist(usa_pops[2])
+usa_pop_3 <- unlist(usa_pops[3])
+usa_pop_4 <- unlist(usa_pops[4])
+usa_pop_5 <- unlist(usa_pops[5])
+
+usa_df <- as.data.frame(usa)
+
+usa_1 <- subset(usa_df, rownames(usa_df) %in% usa_pop_1)
+usa_2 <- subset(usa_df, rownames(usa_df) %in% usa_pop_2)
+usa_3 <- subset(usa_df, rownames(usa_df) %in% usa_pop_3)
+usa_4 <- subset(usa_df, rownames(usa_df) %in% usa_pop_4)
+usa_5 <- subset(usa_df, rownames(usa_df) %in% usa_pop_5)
+
+
+usa_1_snp <- colSums(usa_1, na.rm = TRUE)
+usa_1_top_snp <- head(sort(usa_1_snp, decreasing = TRUE),5)
+usa_1_top_snp <- as.data.frame(usa_1_top_snp)
+
+usa_2_snp <- colSums(usa_2, na.rm = TRUE)
+usa_2_top_snp <- head(sort(usa_2_snp, decreasing = TRUE),5)
+usa_2_top_snp <- as.data.frame(usa_2_top_snp)
+
+usa_3_snp <- colSums(usa_3, na.rm = TRUE)
+usa_3_top_snp <- head(sort(usa_3_snp, decreasing = TRUE),5)
+usa_3_top_snp <- as.data.frame(usa_3_top_snp)
+
+usa_4_snp <- colSums(usa_4, na.rm = TRUE)
+usa_4_top_snp <- head(sort(usa_4_snp, decreasing = TRUE),5)
+usa_4_top_snp <- as.data.frame(usa_4_top_snp)
+
+usa_5_snp <- colSums(usa_5, na.rm = TRUE)
+usa_5_top_snp <- head(sort(usa_5_snp, decreasing = TRUE),5)
+usa_5_top_snp <- as.data.frame(usa_5_top_snp)
